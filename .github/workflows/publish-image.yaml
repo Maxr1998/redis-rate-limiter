@@ -45,6 +45,7 @@ jobs:
         run: |
           echo "${{ needs.build.outputs.module_amd64 }}" | base64 -d > docker/ratelimit-amd64.so
           echo "${{ needs.build.outputs.module_arm64 }}" | base64 -d > docker/ratelimit-arm64.so
+          chmod a+x docker/ratelimit-*.so
       - name: Publish redis image
         uses: elgohr/Publish-Docker-Github-Action@eb53b3ec07136a6ebaed78d8135806da64f7c7e2 # v5
         with:
